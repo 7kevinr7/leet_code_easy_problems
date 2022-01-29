@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
 
@@ -17,8 +17,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [2, 5]
         outputs = [[0, 1, 1], [0, 1, 1, 2, 1, 2]]
 
-        Tester.test_all(Solution.counting_bits, inputs, outputs)
+        return Tester.test_all(Solution.counting_bits, inputs, outputs, verbose)

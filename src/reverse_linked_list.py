@@ -1,24 +1,10 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
+from util.list_node import ListNode
+from util.list_node import build_linked_list
+
 
 class Solution:
-
-    class ListNode:
-        def __init__(self, x):
-            self.val = x
-            self.next = None
-
-    @staticmethod
-    def build_linked_list(nodes: list) -> ListNode:
-        if len(nodes) == 0:
-            return None
-        head = Solution.ListNode(nodes[0])
-        temp_node = head
-        for node in nodes[1:]:
-            temp_node.next = Solution.ListNode(node)
-            temp_node = temp_node.next
-
-        return head
 
     @staticmethod
     def reverse_list(head: ListNode) -> ListNode:
@@ -50,14 +36,22 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[1, 2, 3, 4, 5], [1, 2], []]
         outputs = [[5, 4, 3, 2, 1], [2, 1], []]
 
+        passed_count = 0
+        out_str = ""
         for index in range(len(inputs)):
-            head = Solution.build_linked_list(inputs[index])
+            head = build_linked_list(inputs[index])
 
             result = Solution.reverse_list(head)
 
-            print(f"Test {index + 1} - {inputs[0]}: {outputs[index]} -> {result}")
-            assert outputs[index] == result
+            try:
+                assert outputs[index] == result
+                out_str += (f"Test {index + 1} - reverse_linked_list: {inputs[0]}: {outputs[index]} -> {result}: Passed") + "\n"
+                passed_count += 1
+            except AssertionError as e:
+                out_str += (f"Test {index + 1} - reverse_linked_list: {inputs[0]}: {outputs[index]} -> {result}: Failed") + "\n"
+
+        BaseTester.print_results(Solution.reverse_list, out_str, passed_count, len(inputs), verbose)

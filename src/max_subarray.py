@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 
 class Solution:
@@ -26,8 +26,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[-2, 1, -3, 4, -1, 2, 1, -5, 4], [1], [5, 4, -1, 7, 8]]
         outputs = [6, 1, 23]
 
-        Tester.test_all(Solution.maxSubArray, inputs, outputs)
+        return Tester.test_all(Solution.maxSubArray, inputs, outputs, verbose)

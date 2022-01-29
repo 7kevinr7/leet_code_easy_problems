@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
 
@@ -26,8 +26,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[[-1, 0, 3, 5, 9, 12], [-1, 0, 3, 5, 9, 12]], [9, 2]]
         outputs = [4, -1]
 
-        Tester.test_all_multi_param(Solution.binary_search, inputs, outputs)
+        return Tester.test_all_multi_param(Solution.binary_search, inputs, outputs, verbose)

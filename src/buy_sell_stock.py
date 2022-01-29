@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
     @staticmethod
@@ -18,8 +18,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[7, 1, 5, 3, 6, 4], [7, 6, 4, 3, 1], [1, 2, 3, 4, 5, 6, 7, 8]]
         outputs = [5, 0, 7]
 
-        Tester.test_all(Solution.maxProfit, inputs, outputs)
+        return Tester.test_all(Solution.maxProfit, inputs, outputs, verbose)

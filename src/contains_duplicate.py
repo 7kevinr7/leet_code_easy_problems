@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 from collections import Counter
 
 class Solution:
@@ -11,8 +11,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[1, 2, 3, 1], [1, 2, 3, 4], [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]]
         outputs = [True, False, True]
 
-        Tester.test_all(Solution.containsDuplicate, inputs, outputs)
+        return Tester.test_all(Solution.containsDuplicate, inputs, outputs, verbose)

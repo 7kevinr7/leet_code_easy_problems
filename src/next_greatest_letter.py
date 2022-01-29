@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
 
@@ -27,9 +27,9 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[["c", "f", "j"], ["c", "f", "j"], ["c", "f", "j"], ["c", "f", "j"], ["c", "f", "j"]],
                   ["a", "c", "d", "g", "j"]]
         outputs = ["c", "f", "f", "j", "c"]
 
-        Tester.test_all_multi_param(Solution.next_greatest_letter, inputs, outputs)
+        return Tester.test_all_multi_param(Solution.next_greatest_letter, inputs, outputs, verbose)

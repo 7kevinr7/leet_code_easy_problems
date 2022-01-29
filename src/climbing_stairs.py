@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
     @staticmethod
@@ -15,8 +15,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [2, 3, 4, 5]
         outputs = [2, 3, 6, 8]
 
-        Tester.test_all(Solution.climbing_stairs, inputs, outputs)
+        return Tester.test_all(Solution.climbing_stairs, inputs, outputs, verbose)

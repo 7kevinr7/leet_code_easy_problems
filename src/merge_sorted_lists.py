@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
 
@@ -46,15 +46,23 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[[1, 2, 4], [1, 3, 4]], [[], []], [[], [0]]]
         outputs = [[1, 1, 2, 3, 4, 4], [], [0]]
 
+        passed_count = 0
+        out_str = ""
         for index in range(len(inputs)):
             head1 = Solution.build_linked_list(inputs[index][0])
             head2 = Solution.build_linked_list(inputs[index][1])
 
             result = Solution.merge_lists(head1, head2)
 
-            print(f"Test {index + 1} - {inputs[index][0]} + {inputs[index][1]}: {outputs[index]} -> {result}")
-            assert outputs[index] == result
+            try:
+                assert outputs[index] == result
+                out_str += (f"Test {index + 1} - merge_sorted_list: {inputs[index][0]} + {inputs[index][1]}: {outputs[index]} -> {result}: Passed") + "\n"
+                passed_count += 1
+            except AssertionError as e:
+                out_str += (f"Test {index + 1} - merge_sorted_list: {inputs[index][0]} + {inputs[index][1]}: {outputs[index]} -> {result}: Failed") + "\n"
+
+        BaseTester.print_results(Solution.merge_lists, out_str, passed_count, len(inputs), verbose)

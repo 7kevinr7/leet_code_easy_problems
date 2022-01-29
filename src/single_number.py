@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 from collections import Counter
 
 class Solution:
@@ -7,11 +7,12 @@ class Solution:
     def single_number(nums: list) -> list:
         return Counter(nums).most_common()[::-1][0][0]
 
+
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[2, 2, 1], [4, 1, 2, 1, 2], [1]]
         outputs = [1, 4, 1]
 
-        Tester.test_all(Solution.single_number, inputs, outputs)
+        return Tester.test_all(Solution.single_number, inputs, outputs, verbose)

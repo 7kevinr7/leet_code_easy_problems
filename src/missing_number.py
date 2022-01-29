@@ -1,5 +1,5 @@
 
-from Easy.base_tester import BaseTester
+from util.base_tester import BaseTester
 
 class Solution:
     @staticmethod
@@ -9,8 +9,8 @@ class Solution:
 class Tester(BaseTester):
 
     @staticmethod
-    def test():
+    def test(verbose=False):
         inputs = [[3, 0, 1], [0, 1], [9, 6, 4, 2, 3, 5, 7, 0, 1], [0]]
         outputs = [2, 2, 8, 1]
 
-        Tester.test_all(Solution.missingNumber, inputs, outputs)
+        return Tester.test_all(Solution.missingNumber, inputs, outputs, verbose)
